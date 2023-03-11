@@ -1,0 +1,17 @@
+#
+# see here for syntax:
+# https://clangd.llvm.org/config.html
+#
+Diagnostics:
+  ClangTidy:
+    Add: modernize*
+    Add: abseil*
+    Add: concurrency*
+    Add: cppcoreguidelines*
+    Add: google*
+    Add: performance*
+    Add: readability*
+    Add: portability*
+    Add: bugprone*
+    Add: misc*
+    Remove: modernize-use-trailing-return-type
