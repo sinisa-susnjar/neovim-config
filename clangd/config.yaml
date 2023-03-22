@@ -15,3 +15,8 @@ Diagnostics:
     Add: bugprone*
     Add: misc*
     Remove: modernize-use-trailing-return-type
+
+CompileFlags: # Tweak the parse settings
+  Add:
+    - "--include-directory=/home/user/ssunsnjar/src/bdf-toolkit-cpp/tests/googletest/googletest/include"
+    - "--include-directory=/home/user/ssunsnjar/src/bdf-toolkit-cpp/tests/googletest/googlemock/include"
