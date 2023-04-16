@@ -102,4 +102,5 @@ return require('packer').startup(function(use)
           'nvim-lua/plenary.nvim'
       }
   }
+  use('rupurt/vim-mql5')
 end)
