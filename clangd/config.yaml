@@ -4,20 +4,31 @@
 #
 Diagnostics:
   ClangTidy:
-    Add: modernize*
-    Add: abseil*
-    Add: concurrency*
-    Add: cppcoreguidelines*
-    Add: google*
-    Add: performance*
-    Add: readability*
-    Add: portability*
-    Add: bugprone*
-    Add: misc*
-    Remove: modernize-use-trailing-return-type
+    Add:
+      - "modernize*"
+      - "abseil*"
+      - "concurrency*"
+      - "cppcoreguidelines*"
+      - "google*"
+      - "performance*"
+      - "readability*"
+      - "portability*"
+      - "bugprone*"
+      - "misc*"
+      - "clang-analyzer-*"
+      - "cert-*"
+      - "clang-*"
+      - "hicpp-*"
+      - "misra-*"
+      - "fds-*"
+      - "boost-*"
+      - "llvm-*"
+      - "fuchsia-*"
+
+    Remove:
+      - "modernize-use-trailing-return-type"
+      - "fuchsia-default-arguments-calls"
 
 CompileFlags: # Tweak the parse settings
   Add:
-    - "--include-directory=/home/user/ssunsnjar/src/bdf-toolkit-cpp/tests/googletest/googletest/include"
-    - "--include-directory=/home/user/ssunsnjar/src/bdf-toolkit-cpp/tests/googletest/googlemock/include"
-    - "-D__GTEST_UNIT_TESTS__"
+    - "-std=c++20"
