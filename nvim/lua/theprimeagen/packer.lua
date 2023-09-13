@@ -18,13 +18,21 @@ return require('packer').startup(function(use)
   }
 
   -- Nice colour scheme
-  use({ 
+  use({
       'rose-pine/neovim',
       as = 'rose-pine',
       config = function()
           vim.cmd('colorscheme rose-pine')
       end
   })
+
+  use('Mofiqul/vscode.nvim')
+  use('Alexis12119/nightly.nvim')
+  use('navarasu/onedark.nvim')
+  require('onedark').setup {
+    style = 'darker'
+  }
+  require('onedark').load()
 
   -- Github nvim themes (not as nice as I thought)
   -- use({
@@ -94,6 +102,7 @@ return require('packer').startup(function(use)
       }
   }
 
+  -- Enable debugging inside neovim :)
   use('mfussenegger/nvim-dap')
   use({ "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} })
   use {
@@ -102,5 +111,19 @@ return require('packer').startup(function(use)
           'nvim-lua/plenary.nvim'
       }
   }
+
+  -- MQL5 syntax highlighting
   use('rupurt/vim-mql5')
+
+  -- Highlight trailing whitespace
+  use('csexton/trailertrash.vim')
+
+  -- Extra C++ highlighting
+  use('octol/vim-cpp-enhanced-highlight')
+
+  -- Add lualine for a nicer status line
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
 end)
