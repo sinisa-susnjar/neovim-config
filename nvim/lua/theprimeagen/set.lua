@@ -40,5 +40,5 @@ vim.cmd [[ autocmd! FileType cpp setlocal matchpairs+=<:> ]]
 vim.g.mapleader = "`"
 
 vim.opt.list = true
-vim.opt.listchars = { space='·', eol='¶', trail='·', tab='» ' }
+vim.opt.listchars = { space = '·', eol = '¶', trail = '·', tab = '» ' }
 vim.opt.title = true

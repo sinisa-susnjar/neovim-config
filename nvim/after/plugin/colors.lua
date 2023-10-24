@@ -11,6 +11,9 @@ function ColorMyPencils(color)
     vim.api.nvim_set_hl(0, "Whitespace", { fg = "#303030" })
     -- highlight "nontext" whitespace, e.g. eol
     vim.api.nvim_set_hl(0, "NonText", { fg = "#303030" })
+
+    -- vim.api.nvim_set_hl(0, "Comment", { fg="#556555", italic=true, bold=true })
+    -- vim.api.nvim_set_hl(0, "Comment", { italic=true })
 end
 
 ColorMyPencils()
