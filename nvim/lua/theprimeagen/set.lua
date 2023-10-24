@@ -41,3 +41,4 @@ vim.g.mapleader = "`"
 
 vim.opt.list = true
 vim.opt.listchars = { space='·', eol='¶', trail='·', tab='» ' }
+vim.opt.title = true

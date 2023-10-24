@@ -54,6 +54,20 @@ lsp.configure('clangd', {
     }
 })
 
+-- lsp.configure('serve_d', {
+--     cmd = {
+--         "clangd",
+--         "--compile-commands-dir=.ferment",
+--         "--suggest-missing-includes",
+--         "--clang-tidy",
+--         "--fallback-style=LLVM",
+--         "--enable-config",
+--         "--background-index"
+--     }
+-- })
+
+require'lspconfig'.serve_d.setup{}
+
 -- Configure lua language server for neovim
 lsp.nvim_workspace()
 
