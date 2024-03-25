@@ -28,6 +28,7 @@ Diagnostics:
     Remove:
       - "modernize-use-trailing-return-type"
       - "fuchsia-default-arguments-calls"
+      - "fuchsia-default-arguments-declarations"
 
 CompileFlags: # Tweak the parse settings
   Add:
