@@ -107,7 +107,7 @@ return require('packer').startup(function(use)
 
     -- Enable debugging inside neovim :)
     use('mfussenegger/nvim-dap')
-    use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+    use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } })
     use {
         'tanvirtin/vgit.nvim',
         requires = {
