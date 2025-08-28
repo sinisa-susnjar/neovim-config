@@ -1,141 +1,186 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+vim.cmd([[packadd packer.nvim]])
 
-return require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+return require("packer").startup(function(use)
+  -- Packer can manage itself
+  use("wbthomason/packer.nvim")
 
-    -- Neovim remembers
-    use({ 'vladdoster/remember.nvim', config = [[ require('remember') ]] })
+  use("nvim-lua/plenary.nvim")
 
-    -- Awesome telescope
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+  -- Neovim remembers
+  use({ "vladdoster/remember.nvim", config = [[ require('remember') ]] })
 
-    -- Nice colour schemes
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
-        config = function()
-            vim.cmd('colorscheme rose-pine')
-        end
-    })
+  -- Awesome telescope
+  use({
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.8",
+    -- or                            , branch = '0.1.x',
+    requires = { { "nvim-lua/plenary.nvim" } },
+  })
 
-    -- More schemes here: https://vimcolorschemes.com/dark/
+  -- Nice colour schemes
+  use({
+    "rose-pine/neovim",
+    as = "rose-pine",
+    config = function()
+      vim.cmd("colorscheme rose-pine")
+    end,
+  })
 
-    use("Mofiqul/vscode.nvim")
-    use("Alexis12119/nightly.nvim")
-    use("navarasu/onedark.nvim")
+  -- More schemes here: https://vimcolorschemes.com/dark/
 
-    require('onedark').setup {
-        style = 'darker'
-    }
-    require('onedark').load()
+  use("Mofiqul/vscode.nvim")
+  use("Alexis12119/nightly.nvim")
+  use("navarasu/onedark.nvim")
+  use("folke/tokyonight.nvim")
 
-    -- Github nvim themes (not as nice as I thought)
-    -- use({
-    --     'projekt0n/github-nvim-theme', tag = 'v0.0.7',
-    --     -- or                            branch = '0.0.x'
-    --     config = function()
-    --         -- Example config in Lua
-    --         require("github-theme").setup({
-    --             theme_style = "dark",
-    --             function_style = "italic",
-    --             sidebars = {"qf", "vista_kind", "terminal", "packer"},
+  require("onedark").setup({
+    style = "darker",
+  })
+  require("onedark").load()
 
-    --             -- Change the "hint" color to the "orange" color, and make the "error" color bright red
-    --             colors = {hint = "orange", error = "#ff0000"},
+  -- Github nvim themes (not as nice as I thought)
+  -- use({
+  --     'projekt0n/github-nvim-theme', tag = 'v0.0.7',
+  --     -- or                            branch = '0.0.x'
+  --     config = function()
+  --         -- Example config in Lua
+  --         require("github-theme").setup({
+  --             theme_style = "dark",
+  --             function_style = "italic",
+  --             sidebars = {"qf", "vista_kind", "terminal", "packer"},
 
-    --             -- Overwrite the highlight groups
-    --             overrides = function(c)
-    --                 return {
-    --                     htmlTag = {fg = c.red, bg = "#282c34", sp = c.hint, style = "underline"},
-    --                     DiagnosticHint = {link = "LspDiagnosticsDefaultHint"},
-    --                     -- this will remove the highlight groups
-    --                     TSField = {},
-    --                 }
-    --             end
-    --         })
-    --         -- vim.cmd('colorscheme rose-pine')
-    --     end
-    -- })
+  --             -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+  --             colors = {hint = "orange", error = "#ff0000"},
 
-    -- Dracula colour scheme (ditto)
-    -- use('Mofiqul/dracula.nvim')
+  --             -- Overwrite the highlight groups
+  --             overrides = function(c)
+  --                 return {
+  --                     htmlTag = {fg = c.red, bg = "#282c34", sp = c.hint, style = "underline"},
+  --                     DiagnosticHint = {link = "LspDiagnosticsDefaultHint"},
+  --                     -- this will remove the highlight groups
+  --                     TSField = {},
+  --                 }
+  --             end
+  --         })
+  --         -- vim.cmd('colorscheme rose-pine')
+  --     end
+  -- })
 
-    -- Treesitter is a must
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    use('nvim-treesitter/playground')
+  -- Dracula colour scheme (ditto)
+  -- use('Mofiqul/dracula.nvim')
 
-    -- Harpoon from the nvim giga chad
-    use('theprimeagen/harpoon')
+  -- Treesitter is a must
+  use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
+  use("nvim-treesitter/playground")
 
-    -- This is sweet!
-    use('mbbill/undotree')
+  -- Harpoon from the nvim giga chad
+  use({
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { { "nvim-lua/plenary.nvim" } },
+  })
 
-    -- Git is a must have
-    use('tpope/vim-fugitive')
+  -- This is sweet!
+  use("mbbill/undotree")
 
-    -- Yes, LSP rocks!
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
-        requires = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },             -- Required
-            { 'williamboman/mason.nvim' },           -- Optional
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+  -- Git is a must have
+  use("tpope/vim-fugitive")
 
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },         -- Required
-            { 'hrsh7th/cmp-nvim-lsp' },     -- Required
-            { 'hrsh7th/cmp-buffer' },       -- Optional
-            { 'hrsh7th/cmp-path' },         -- Optional
-            { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-            { 'hrsh7th/cmp-nvim-lua' },     -- Optional
+  -- Yes, LSP rocks!
+  use({
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v1.x",
+    requires = {
+      -- LSP Support
+      { "neovim/nvim-lspconfig" }, -- Required
+      { "williamboman/mason.nvim" }, -- Optional
+      { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
-            -- Snippets
-            { 'L3MON4D3/LuaSnip' },             -- Required
-            { 'rafamadriz/friendly-snippets' }, -- Optional
-        }
-    }
+      -- Autocompletion
+      { "hrsh7th/nvim-cmp" }, -- Required
+      { "hrsh7th/cmp-nvim-lsp" }, -- Required
+      { "hrsh7th/cmp-buffer" }, -- Optional
+      { "hrsh7th/cmp-path" }, -- Optional
+      { "saadparwaiz1/cmp_luasnip" }, -- Optional
+      { "hrsh7th/cmp-nvim-lua" }, -- Optional
 
-    -- Enable debugging inside neovim :)
-    use('mfussenegger/nvim-dap')
-    use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } })
-    use {
-        'tanvirtin/vgit.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim'
-        }
-    }
+      -- Snippets
+      { "L3MON4D3/LuaSnip" }, -- Required
+      { "rafamadriz/friendly-snippets" }, -- Optional
+    },
+  })
 
-    -- MQL5 syntax highlighting
-    use('rupurt/vim-mql5')
+  -- Enable debugging inside neovim :)
+  use("mfussenegger/nvim-dap")
+  use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } })
+  use({
+    "tanvirtin/vgit.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+  })
 
-    -- Highlight trailing whitespace
-    use("csexton/trailertrash.vim")
+  -- MQL5 syntax highlighting
+  use("rupurt/vim-mql5")
 
-    -- Extra C++ highlighting
-    use("octol/vim-cpp-enhanced-highlight")
+  -- Highlight trailing whitespace
+  use("csexton/trailertrash.vim")
 
-    -- Add dev icons
-    use("nvim-tree/nvim-web-devicons")
+  -- Extra C++ highlighting
+  use("octol/vim-cpp-enhanced-highlight")
 
-    -- Add lualine for a nicer status line
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-    }
+  -- Add dev icons
+  use("nvim-tree/nvim-web-devicons")
 
-    -- Add trouble plugin to list clangd errors, warnings, info in a separate buffer
-    use({ "folke/trouble.nvim", requires = { "nvim-tree/nvim-web-devicons" } })
+  -- Add lualine for a nicer status line
+  use({
+    "nvim-lualine/lualine.nvim",
+    requires = { "nvim-tree/nvim-web-devicons", opt = true },
+  })
 
-    -- Add auto-formatting plugin for clang-format
-    use('stevearc/conform.nvim')
+  -- Add trouble plugin to list clangd errors, warnings, info in a separate buffer
+  use({ "folke/trouble.nvim", requires = { "nvim-tree/nvim-web-devicons" } })
+
+  -- Add auto-formatting plugin for clang-format
+  use("stevearc/conform.nvim")
+
+  -- Folding using nvim-ufo
+  use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+
+  -- Next level folding based on nvim-ufo
+  use({
+    "chrisgrieser/nvim-origami",
+    config = function()
+      require("origami").setup({})
+    end, -- setup call needed
+  })
+
+  -- default settings
+  require("origami").setup({
+    -- requires with `nvim-ufo`
+    keepFoldsAcrossSessions = package.loaded["ufo"] ~= nil,
+
+    pauseFoldsOnSearch = true,
+
+    -- incompatible with `nvim-ufo`
+    foldtextWithLineCount = {
+      enabled = package.loaded["ufo"] == nil,
+      template = "   %s lines", -- `%s` gets the number of folded lines
+      hlgroupForCount = "Comment",
+    },
+
+    foldKeymaps = {
+      setup = true, -- modifies `h` and `l`
+      hOnlyOpensOnFirstColumn = false,
+    },
+
+    -- redundant with `nvim-ufo`
+    autoFold = {
+      enabled = false,
+      kinds = { "comment", "imports" }, ---@type lsp.FoldingRangeKind[]
+    },
+  })
 end)
