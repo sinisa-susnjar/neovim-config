@@ -147,40 +147,41 @@ return require("packer").startup(function(use)
   -- Add auto-formatting plugin for clang-format
   use("stevearc/conform.nvim")
 
-  -- Folding using nvim-ufo
-  use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+  -- TODO: need to configure this some more, e.g. only for certain file-types etc
+  -- -- Folding using nvim-ufo
+  -- use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 
-  -- Next level folding based on nvim-ufo
-  use({
-    "chrisgrieser/nvim-origami",
-    config = function()
-      require("origami").setup({})
-    end, -- setup call needed
-  })
+  -- -- Next level folding based on nvim-ufo
+  -- use({
+  --   "chrisgrieser/nvim-origami",
+  --   config = function()
+  --     require("origami").setup({})
+  --   end, -- setup call needed
+  -- })
 
-  -- default settings
-  require("origami").setup({
-    -- requires with `nvim-ufo`
-    keepFoldsAcrossSessions = package.loaded["ufo"] ~= nil,
+  -- -- default settings
+  -- require("origami").setup({
+  --   -- requires with `nvim-ufo`
+  --   keepFoldsAcrossSessions = package.loaded["ufo"] ~= nil,
 
-    pauseFoldsOnSearch = true,
+  --   pauseFoldsOnSearch = true,
 
-    -- incompatible with `nvim-ufo`
-    foldtextWithLineCount = {
-      enabled = package.loaded["ufo"] == nil,
-      template = "   %s lines", -- `%s` gets the number of folded lines
-      hlgroupForCount = "Comment",
-    },
+  --   -- incompatible with `nvim-ufo`
+  --   foldtextWithLineCount = {
+  --     enabled = package.loaded["ufo"] == nil,
+  --     template = "   %s lines", -- `%s` gets the number of folded lines
+  --     hlgroupForCount = "Comment",
+  --   },
 
-    foldKeymaps = {
-      setup = true, -- modifies `h` and `l`
-      hOnlyOpensOnFirstColumn = false,
-    },
+  --   foldKeymaps = {
+  --     setup = true, -- modifies `h` and `l`
+  --     hOnlyOpensOnFirstColumn = false,
+  --   },
 
-    -- redundant with `nvim-ufo`
-    autoFold = {
-      enabled = false,
-      kinds = { "comment", "imports" }, ---@type lsp.FoldingRangeKind[]
-    },
-  })
+  --   -- redundant with `nvim-ufo`
+  --   autoFold = {
+  --     enabled = false,
+  --     kinds = { "comment", "imports" }, ---@type lsp.FoldingRangeKind[]
+  --   },
+  -- })
 end)
