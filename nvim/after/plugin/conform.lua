@@ -4,6 +4,7 @@ require("conform").setup({
     lua = { "stylua" },
     d = { "dfmt" },
     -- Conform will run multiple formatters sequentially
+    -- python = { "black" },
     python = { "autopep8" },
     -- Use a sub-list to run only the first available formatter
     -- javascript = { { "prettierd", "prettier" } },

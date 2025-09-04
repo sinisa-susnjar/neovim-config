@@ -41,3 +41,10 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 -- Disabled because reformatting messing things up
 -- vim.api.nvim_command("au BufNewFile,BufRead *.mq5 set filetype=cpp")
 -- vim.api.nvim_command("au BufNewFile,BufRead *.mqh set filetype=cpp")
+
+-- trying to evoke modifyOtherKeys in order to make C-p and C-S-p work
+-- see: https://github.com/neovim/neovim/issues/15352
+-- vim.api.nvim_command('let &t_TI = "\\<Esc>[>4;2m"')
+-- vim.api.nvim_command('let &t_TE = "\\<Esc>[>4;m"')
+-- vim.api.nvim_command('autocmd UIEnter * if v:event.chan ==# 0 | call chansend(v:stderr, "\\x1b[>4;2m") | endif')
+-- vim.api.nvim_command('autocmd UILeave * if v:event.chan ==# 0 | call chansend(v:stderr, "\\x1b[>4;0m") | endif')
