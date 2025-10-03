@@ -147,6 +147,9 @@ return require("packer").startup(function(use)
   -- Add auto-formatting plugin for clang-format
   use("stevearc/conform.nvim")
 
+  -- Get Github Copilot, enable and setup with :Copilot setup
+  use("github/copilot.vim")
+
   -- TODO: need to configure this some more, e.g. only for certain file-types etc
   -- -- Folding using nvim-ufo
   -- use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })

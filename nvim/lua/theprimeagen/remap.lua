@@ -97,3 +97,7 @@ vim.keymap.set("n", "<C-e>", "<cmd>TroubleToggle<CR>zz")
 
 -- Remap switching between splits from <C-w>w to <TAB>
 vim.keymap.set("n", "<TAB>", "<C-w>w")
+
+-- Copilot remaps
+vim.api.nvim_set_keymap("i", "<C-L>", "copilot#Accept('<CR>')", { silent = true, expr = true, noremap = true })
+vim.g.copilot_no_tab_map = true
